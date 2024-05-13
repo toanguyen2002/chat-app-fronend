@@ -4,7 +4,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { myContext } from './MainComponent';
 import axios from 'axios';
 
-const IP = "http://localhost:5678"
+const IP = "http://44.210.92.52:5678"
 function ModalAddMember({ closemodal, prop }) {
     const { refresh, setRefresh } = useContext(myContext);
     const userData = JSON.parse(localStorage.getItem("userData"));

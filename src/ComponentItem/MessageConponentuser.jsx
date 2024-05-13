@@ -4,7 +4,7 @@ import { myContext } from '../Component/MainComponent'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import UndoIcon from '@mui/icons-material/Undo';
 import VideocamIcon from '@mui/icons-material/Videocam';
-const IP = "http://localhost:5678"
+const IP = "http://44.210.92.52:5678"
 function MyMessageConponent({ props }) {
     const refBox = useRef(null)
     const { refresh, setRefresh } = useContext(myContext)

@@ -6,7 +6,7 @@ import axios from 'axios';
 import UserChatGroupComponent from '../ComponentItem/UserChatGroupComponent';
 
 //${IP}
-const IP = "http://localhost:5678"
+const IP = "http://54.172.179.189:5678"
 function DeleteAndAddMemberModal({ closemodal, prop }) {
     const { refresh, setRefresh } = useContext(myContext);
     const userData = JSON.parse(localStorage.getItem("userData"));

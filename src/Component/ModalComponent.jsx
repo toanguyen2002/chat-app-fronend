@@ -6,7 +6,7 @@ import axios from 'axios';
 import ChatBox from '../ComponentItem/ChatBox';
 import { io } from 'socket.io-client';
 //${IP}
-const IP = "http://localhost:5678"
+const IP = "http://44.210.92.52:5678"
 const socket = io(IP)
 function ModalComponent({ clockModal }) {
     const [users, setUsers] = useState([]);
