@@ -6,8 +6,8 @@ function VideoCall() {
     const { roomId } = useParams()
     console.log(roomId);
     const myMetting = async (element) => {
-        const appId = 1369038062
-        const server = "9f5459f14ae93ae1beffbcde28709515"
+        const appId = 26075018
+        const server = "c12f079e8384505f9c847e79740c54c3"
         const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appId, server, roomId, Date.now().toString(), "NameMember")
         const zc = ZegoUIKitPrebuilt.create(kitToken)
         zc.joinRoom({

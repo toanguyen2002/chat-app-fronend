@@ -190,10 +190,7 @@ export default function ChatAreaComponent() {
                 )
                 socket.emit("new message", dataSend.data)
                 socket.emit("render-box-chat", true)
-
-                // setMess([...mess, dataSend.data])
                 setContentMess("")
-                // setRenderMess(!renderMess)
             } catch (error) {
                 console.log(error);
             }
@@ -257,7 +254,7 @@ export default function ChatAreaComponent() {
             }
         }
         renderChatGroup()
-    }, [chat_id])
+    }, [chat_id, refresh])
     const handleRemoveMember = async () => {
         // notification
 
@@ -341,7 +338,7 @@ export default function ChatAreaComponent() {
         >
             <CircularProgress color="inherit" />
         </Backdrop>
-            {open ? <DeleteAndAddMemberModal closemodal={setOpen} prop={{ _id: chat_id}} /> : <></>}
+            {open ? <DeleteAndAddMemberModal closemodal={setOpen} prop={{ _id: chat_id }} /> : <></>}
             {showAddMem ? <ModalAddMember closemodal={setShowAddMem} prop={{ _id: chat_id }} /> : <div></div>}
 
             <div className='chat-area'>
@@ -350,8 +347,6 @@ export default function ChatAreaComponent() {
 
                     <div className="chat-area-text">
                         <p className='chat-name'>{chat_user}</p>
-                        {/* <div className="online">online</div> */}
-                        {/* <p className='chat-time'>{data.timeSend}</p> */}
                     </div>
 
 

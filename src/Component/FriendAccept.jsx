@@ -50,7 +50,6 @@ function FriendAccept({ closemodal }) {
     }
     return (
         <div>
-            {console.log(users)}
             <div className="get-users-modal">
                 <div className="modal-title">
                     <h3 className='fr-cap2'>Lời Mời Kết Bạn</h3>

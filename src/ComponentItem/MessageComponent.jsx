@@ -10,8 +10,6 @@ function MessageComponent({ props }) {
     const { refresh, setRefresh } = useContext(myContext)
     const userData = JSON.parse(localStorage.getItem("userData"));
     const handleGetidMessAndDelete = async (e) => {
-        //http://localhost:5678/message/deleteMess
-        // console.log(props._id);
         try {
             const rs = await axios.post(`${IP}/message/removeMess`, {
                 messId: props._id,
@@ -28,11 +26,7 @@ function MessageComponent({ props }) {
         }
     }
     const handlesendKey = async (idChat, idNewOwn) => {
-
-
-        console.log(props.sender._id);
-        console.log(props.chat._id);
-
+        // console.log(props);
         try {
             const rs = await axios.post(`${IP}/chat/sendGoldkey`, {
                 chatId: props.chat._id,
@@ -42,8 +36,19 @@ function MessageComponent({ props }) {
                     Authorization: `Bearer ${userData.data.token}`,
                 },
             })
+            await axios.post(
+                `${IP}/message/`, {
+                chatId: props.chat._id,
+                content: `${userData.data.name} đã bổ nhiệm ${props.sender.name} làm trưởng phòng mới`,
+                typeMess: "notification"
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${userData.data.token}`,
+                    }
+                }
+            )
             setRefresh(!refresh)
-            console.log(rs);
         } catch (error) {
             console.log(error);
         }

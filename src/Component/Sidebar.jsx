@@ -48,7 +48,7 @@ function Sidebar() {
     const [showListFriend, setShowListFriend] = useState(false)
     const [showListAccept, setShowListAccept] = useState(false)
     const [chatView, setChatView] = useState(false)
-    const  currentTime = new Date();
+    const currentTime = new Date();
     const formattedTime = currentTime.getHours() + ":" + currentTime.getMinutes();
 
 
