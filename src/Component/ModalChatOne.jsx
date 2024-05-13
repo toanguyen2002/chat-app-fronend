@@ -7,7 +7,7 @@ import ChatBox from '../ComponentItem/ChatBox';
 // import { io } from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 //${IP}
-const IP = "http://44.210.92.52:5678"
+const IP = "http://54.174.184.179:5678"
 function ModalChatOne({ clockModal }) {
     const navigate = useNavigate()
     const [users, setUsers] = useState([]);
@@ -19,7 +19,7 @@ function ModalChatOne({ clockModal }) {
     const accessChatOneToOne = async (item) => {
         try {
             const respone = await axios.post(
-                "${IP}/chat/", {
+                `${IP}/chat/`, {
                 userId: item._id,
             }, {
                 headers: {
@@ -38,7 +38,7 @@ function ModalChatOne({ clockModal }) {
     }
     useEffect(() => {
         const getUser = async () => {
-            const dataUser = await axios.get(`${IP}/user/getUserAccept`, {
+            const dataUser = await axios.post(`${IP}/user/getUserAccept`, {
                 name: userData.data.name,
                 userId: userData.data._id
             }, {
@@ -46,6 +46,7 @@ function ModalChatOne({ clockModal }) {
                     Authorization: `Bearer ${userData.data.token}`,
                 },
             })
+            console.log(`getUser`);
             setUsers(dataUser.data);
             console.log(dataUser.data);
         }

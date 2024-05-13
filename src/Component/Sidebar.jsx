@@ -27,7 +27,7 @@ import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
 import DeleteAndAddMemberModal from './DeleteAndAddMemberModal';
 
 //${IP}
-const IP = "http://44.210.92.52:5678"
+const IP = "http://54.174.184.179:5678"
 const socket = io(IP)
 function Sidebar() {
 

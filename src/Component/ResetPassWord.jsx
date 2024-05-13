@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 //${IP}
-const IP = "http://44.210.92.52:5678"
+const IP = "http://54.174.184.179:5678"
 function ResetPassWord() {
     const [name, setName] = useState("")
     const [error, setError] = useState(false)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
-const IP = "http://44.210.92.52:5678"
+const IP = "http://54.174.184.179:5678"
 // const socket = io("http://localhost:5678")
 function ChatBox({ props }) {
     const nav = useNavigate()
