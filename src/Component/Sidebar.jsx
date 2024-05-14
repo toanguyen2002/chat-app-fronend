@@ -9,13 +9,12 @@ import ChatBox from '../ComponentItem/ChatBox';
 import ModalComponent from './ModalComponent';
 import { myContext } from './MainComponent';
 import axios from 'axios';
-// import { io } from 'socket.io-client';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import ModalChatOne from './ModalChatOne';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import MenuIcon from '@mui/icons-material/Menu';
-import { io } from 'socket.io-client';
+
 
 
 
@@ -23,19 +22,14 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import FindAndAddFriendComponent from './FindAndAddFriendComponent';
 import FriendAccept from './FriendAccept';
-import ReduceCapacityIcon from '@mui/icons-material/ReduceCapacity';
-import DeleteAndAddMemberModal from './DeleteAndAddMemberModal';
 
-//${IP}
-const IP = "http://54.174.184.179:5678"
-const socket = io(IP)
+
 function Sidebar() {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [openFNC, setOpenFNC] = useState(false)
-    const handleOpenFNC = () => setOpenFNC(true);
+
 
     const params = useParams()
     // const [chat_id, chat_user] = params.id.split("&");
@@ -47,15 +41,13 @@ function Sidebar() {
     const [showOne, setShowOne] = useState(false)
     const [showListFriend, setShowListFriend] = useState(false)
     const [showListAccept, setShowListAccept] = useState(false)
-    const [chatView, setChatView] = useState(false)
-    const currentTime = new Date();
-    const formattedTime = currentTime.getHours() + ":" + currentTime.getMinutes();
+
 
 
     const [search, setSearch] = useState("")
     const renderChatBox = async () => {
         try {
-            const dataRender = await axios.get(`${IP}/chat/`, {
+            const dataRender = await axios.get("http://localhost:5678/chat/", {
                 headers: {
                     Authorization: `Bearer ${userData.data.token}`,
                 },
@@ -65,18 +57,12 @@ function Sidebar() {
 
         }
     }
-    useEffect(() => {
-        // console.log(socket);
-        renderChatBox()
-    }, [
-        refresh, userData.data.token, socket
-    ]);
 
 
     useEffect(() => {
         const getChat = async () => {
             try {
-                const chatData = await axios.get(`${IP}/chat/findChatByName?chatName=${search}`, {
+                const chatData = await axios.get(`http://localhost:5678/chat/findChatByName?chatName=${search}`, {
                     headers: {
                         Authorization: `Bearer ${userData.data.token}`,
                     }
@@ -100,26 +86,8 @@ function Sidebar() {
         setShowOne(true)
     }
     const clickToLogout = () => {
-        socket.emit("demo", { mes: "demo" })
         nav('/')
     }
-    useEffect(() => {
-        socket.on("group-rcv", (data) => {
-            // console.log("render");
-            renderChatBox()
-            // setUsers([...users], data)
-        })
-        socket.on("render-box-chat-rcv", () => {
-            renderChatBox()
-        })
-    }, [socket])
-    // useEffect(() => {
-    // socket.on("demo-rcv", () => {
-
-
-    // })
-
-    // }, [socket])
 
     return (
 
@@ -128,6 +96,8 @@ function Sidebar() {
                 <div>
                     <IconButton onClick={() => setOpen(true)}>
                         <Avatar alt={userData.data.name} src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t39.30808-6/411522943_373985608348589_889785018101940738_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEamTt0rJAFTB6RfoXS4ngnxYyL2_YybPbFjIvb9jJs9pt9zhvp6TRX4bZZNJL476Ruij8pCjz8clb5RsQTbvLj&_nc_ohc=a4wxphwpC7cAX-Y_7Id&_nc_ht=scontent.fsgn5-3.fna&cb_e2o_trans=t&oh=00_AfDA9wMo0eBbIVcTT3TWosffHErD26nEGK5TDEw6AXV28g&oe=65ADAABD" sx={{ width: 48, height: 48, backgroundColor: '#1E90FF' }} />
+
+                        {/* <Avatar alt={userData.data.name} src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t39.30808-6/411522943_373985608348589_889785018101940738_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEamTt0rJAFTB6RfoXS4ngnxYyL2_YybPbFjIvb9jJs9pt9zhvp6TRX4bZZNJL476Ruij8pCjz8clb5RsQTbvLj&_nc_ohc=a4wxphwpC7cAX-Y_7Id&_nc_ht=scontent.fsgn5-3.fna&cb_e2o_trans=t&oh=00_AfDA9wMo0eBbIVcTT3TWosffHErD26nEGK5TDEw6AXV28g&oe=65ADAABD" sx={{ width: 48, height: 48, backgroundColor: '#1E90FF' }} /> */}
                     </IconButton>
 
                 </div>
@@ -168,20 +138,12 @@ function Sidebar() {
                             item.chatName = item.users[0].name
                         }
                     }
-                    return (<div key={index} className="" onClick={() => { }}>
-                        <ChatBox props={item} />
-                        <div class="separator"></div>
-                        {/* {
-                            // console.log(chatView.isGroup)
-                            item.isGroup ? <>
-                                <IconButton>
-                                    <GroupAddIcon />
-                                </IconButton>
-                                <IconButton onClick={() => handleOpenFNC(true)}>
-                                    <ReduceCapacityIcon />
-                                </IconButton></> : <></>
+                    return (<div key={index} className="" onClick={() => {
+                        // console.log(item.isGroup);
+                    }}>
 
-                        } */}
+                        <ChatBox props={item} />
+
                     </div>)
                 }
                 )}
@@ -191,43 +153,26 @@ function Sidebar() {
             {showOne ? <ModalChatOne clockModal={setShowOne} /> : <div></div>}
             {showListFriend ? <FindAndAddFriendComponent closemodal={setShowListFriend} /> : <div></div>}
             {showListAccept ? <FriendAccept closemodal={setShowListAccept} /> : <div></div>}
-            {/* {openFNC ? <DeleteAndAddMemberModal closemodal={setOpenFNC} prop={{ _id: "66112bffd488b068ee661544" }} /> : <div></div>} */}
 
-            {/* profile */}
             <Modal open={open} onClose={handleClose}>
                 <div className="modal-style">
-                    {/* upper */}
-                    <div className='modal-upper'>
-                        <IconButton>
-                            <MenuIcon className='iconColor2' />
-                        </IconButton>
+                    <div className="modal-header">Thông Tin Cá Nhân</div>
+                    <div className="modal-body">
+                        <div className="modal-body-name">
+                            <p>Tên Đăng Nhập: </p> <p>{userData.data.name}</p>
+                        </div>
+                        <div className="modal-body-email">
+                            <p>Email: </p> <p>{userData.data.email}</p>
+                        </div>
                     </div>
-                    {/* bottom */}
-                    <div className='modal-bottom'>
-                        <Avatar alt={userData.data.name} src="https://scontent.fsgn5-3.fna.fbcdn.net/v/t39.30808-6/411522943_373985608348589_889785018101940738_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEamTt0rJAFTB6RfoXS4ngnxYyL2_YybPbFjIvb9jJs9pt9zhvp6TRX4bZZNJL476Ruij8pCjz8clb5RsQTbvLj&_nc_ohc=a4wxphwpC7cAX-Y_7Id&_nc_ht=scontent.fsgn5-3.fna&cb_e2o_trans=t&oh=00_AfDA9wMo0eBbIVcTT3TWosffHErD26nEGK5TDEw6AXV28g&oe=65ADAABD" sx={{ width: 80, height: 80, backgroundColor: '#1E90FF', position: 'relative', left: 180, bottom: 50, fontSize: 40 }} />
-                        <div className="modal-header">Thông Tin Cá Nhân</div>
-                        <div className="modal-body">
-                            <div className="modal-body-name">
-                                <p>Tên Đăng Nhập: </p> <p>{userData.data.name}</p>
-                            </div>
-                            <div className="modal-body-email">
-                                <p>Email: </p> <p>{userData.data.email}</p>
-                            </div>
-                            <div className="modal-body-email">
-                                <p>Quê Quán: </p> <div><textarea className='input-area'></textarea></div>
-                            </div>
-                            <div className="modal-body-email">
-                                <p>Sở Thích: </p> <div><textarea className='input-area'></textarea></div>
-                            </div>
+                    <div className="modal-footer">
+                        <a href='/'>Chỉnh Sửa Thông Tin</a>
+                    </div>
 
-                        </div>
-                        <div className="modal-footer">
-                            <a href='/'>Chỉnh Sửa Thông Tin</a>
-                        </div>
-                    </div>
+
+
                 </div>
             </Modal>
-            {/* profile */}
         </div >
 
 

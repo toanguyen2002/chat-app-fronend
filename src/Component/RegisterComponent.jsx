@@ -2,8 +2,7 @@ import { Backdrop, CircularProgress } from '@mui/material'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-//${IP}
-const IP = "http://54.174.184.179:5678"
+
 function RegisterComponent() {
     const [data, setData] = useState({ name: "", email: "", password: "", otp: "" })
     const [otpError, setOtpError] = useState('')
@@ -27,7 +26,7 @@ function RegisterComponent() {
             setEmailAccount("Email Rỗng hoặc không hợp Phải là Gmail");
         } else {
             try {
-                await axios.post(`${IP}/user/getotp`,
+                await axios.post(`http://localhost:5678/user/getotp`,
                     {
                         email: data.email,
                         otp: otpRender
@@ -59,7 +58,7 @@ function RegisterComponent() {
             try {
                 setLoading(true)
                 const respone = await axios.post(
-                    `${IP}/user/register`,
+                    "http://localhost:5678/user/register",
                     data,
                     {
                         headers: { "Content-type": "application/json" }

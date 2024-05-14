@@ -4,22 +4,20 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { myContext } from './MainComponent';
 import axios from 'axios';
 import ChatBox from '../ComponentItem/ChatBox';
-// import { io } from 'socket.io-client';
+
 import { useNavigate } from 'react-router-dom';
-//${IP}
-const IP = "http://54.174.184.179:5678"
 function ModalChatOne({ clockModal }) {
     const navigate = useNavigate()
     const [users, setUsers] = useState([]);
     const userData = JSON.parse(localStorage.getItem("userData"));
     const { refresh, setRefresh } = useContext(myContext);
-    // var socket = io("http://localhost:5678")
     const [nameUser, setNameUser] = useState("")
 
     const accessChatOneToOne = async (item) => {
+
         try {
             const respone = await axios.post(
-                `${IP}/chat/`, {
+                "http://localhost:5678/chat/", {
                 userId: item._id,
             }, {
                 headers: {
@@ -38,20 +36,14 @@ function ModalChatOne({ clockModal }) {
     }
     useEffect(() => {
         const getUser = async () => {
-            const dataUser = await axios.post(`${IP}/user/getUserAccept`, {
-                name: userData.data.name,
-                userId: userData.data._id
-            }, {
+            const dataUser = await axios.get(`http://localhost:5678/user/fetchUsers?search=${nameUser}`, {
                 headers: {
                     Authorization: `Bearer ${userData.data.token}`,
                 },
             })
-            console.log(`getUser`);
             setUsers(dataUser.data);
-            console.log(dataUser.data);
         }
         getUser()
-
     }, [
         refresh, nameUser
     ]);

@@ -5,8 +5,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
-//${IP}
-const IP = "http://54.174.184.179:5678"
+
 function LoginComponent() {
     const nav = useNavigate()
     const [data, setData] = useState({ name: "", password: "" })
@@ -20,7 +19,7 @@ function LoginComponent() {
         try {
             setLoading(true)
             const respone = await axios.post(
-                `${IP}/user/login`,
+                "http://localhost:5678/user/login",
                 data,
                 {
                     headers: { "Content-type": "application/json" }

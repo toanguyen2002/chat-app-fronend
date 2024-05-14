@@ -7,7 +7,6 @@ import { Route, Routes } from 'react-router-dom'
 import ChatAreaComponent from './Component/ChatAreaComponent'
 import RegisterComponent from './Component/RegisterComponent'
 import ResetPassWord from './Component/ResetPassWord'
-import VideoCall from './Component/VideoCall'
 
 
 
@@ -25,7 +24,6 @@ function App() {
         </Route>
         <Route path='register' element={<RegisterComponent />} />
         <Route path='resetPass' element={<ResetPassWord />} />
-        <Route path='/room/:roomId' element={<VideoCall />} />
       </Routes>
     </div>
 

@@ -20,14 +20,13 @@
 }
 
 .get-users-modal {
-  z-index: 1000;
   position: absolute;
   width: 350px;
   width: 350px;
   width: 600px;
   height: 500px;
-  left: 40%;
-  top: 10%;
+  left: 50%;
+  top: 25%;
   overflow: scroll;
   border-radius: 0px;
   border: 1px solid black;
@@ -38,21 +37,6 @@
   background-size: cover;
 }
 
-.get-users-modal2 {
-  z-index: 1000;
-  position: absolute;
-  width: 400px;
-  height: 600px;
-  left: 40%;
-  top: 10%;
-  border-radius: 0px;
-  display: flex;
-  flex-direction: column;
-  background-image: url('https://res.cloudinary.com/dhyt592i7/image/upload/v1713257263/ojqyikpj9a9h3fkuude3.jpg');
-  background-position: center;
-  background-size: cover;
-  border-radius: 15px;
-}
 
 .model-header {
   display: flex;
@@ -420,50 +404,12 @@
   align-self: center;
 }
 
-/* .chat-icon:hover {
-  cursor: pointer;
-} */
-
 .chat-title {
   color: #000;
   font-weight: 400;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-}
 
-.chat-title2 {
-  color: #4169E1;
-  font-weight: 400;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  position: relative;
-  left: 43px;
-  top: 10px;
-}
-
-.cap-video {
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.call-cap {
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  top: 4px;
-  left: 2px;
-  color: #696969;
-}
-
-.call-btn {
-
-  height: 30px;
-  width: 100px;
-  border-radius: 10px;
 }
 
 .chat-area {
@@ -528,7 +474,7 @@
   margin: 10px;
   border-radius: 20px;
   font-family: 'Times New Roman', Times, serif;
-  position: relative;
+
 
 }
 
@@ -555,61 +501,15 @@
 
 .hidden-form {
   position: absolute;
-  left: -100px;
-  bottom: -10px;
+  left: 0;
+  bottom: -15px;
   display: none;
-  z-index: 1000;
-  width: 100px;
-  height: max-content;
-  border-radius: 5px;
-  color: #FF0000;
-  background: 1px;
-  background-color: white;
-}
-
-.show-option:hover .key-form {
-  cursor: pointer;
-  display: block;
-}
-
-.gold-key-hover {
-  display: none;
-}
-
-.hidden-button {
-  background-color: white;
-  border: none;
-  color: #FF0000;
-  position: relative;
-  left: 15px;
-  background: 1px;
-  z-index: 1000;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .my-message-row:hover .hidden-form {
   display: block;
   cursor: pointer;
 }
-
-.hidden-client {
-  z-index: 500;
-  display: none;
-  position: absolute;
-  right: -70px;
-  bottom: 0px;
-  background-color: white;
-  border-radius: 5px;
-  width: 70px;
-  justify-content: center;
-  align-items: center;
-}
-
-.message-container:hover .hidden-client {
-  display: block;
-  cursor: pointer;
-}
-
 
 .chat-row-time {
   display: flex;
@@ -626,15 +526,15 @@
 }
 
 .modal-style {
-  top: 30%;
+  top: 50%;
   left: 50%;
   position: absolute;
-  /* background-image: url('https://res.cloudinary.com/dhyt592i7/image/upload/v1709910003/flevwdswocuiefukymtl.jpg');
+  background-image: url('https://res.cloudinary.com/dhyt592i7/image/upload/v1709910003/flevwdswocuiefukymtl.jpg');
   height: 100vh;
   background-position: center;
-  background-size: cover; */
+  background-size: cover;
   transform: translate(-50%, -50%);
-  width: 150px;
+  width: 400px;
   height: 150px;
   border: 2px solid #000;
   box-shadow: 24px;
@@ -645,32 +545,6 @@
   align-items: center;
 }
 
-.modal-bottom {
-  background-color: white;
-  width: 450px;
-  height: 350px;
-  position: relative;
-  border: 2px solid #000;
-  box-shadow: 24px;
-  padding: 7px;
-  border-width: 0px;
-  justify-content: center;
-  align-items: center;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
-
-.modal-upper {
-  background-image: url('https://res.cloudinary.com/dhyt592i7/image/upload/v1713258763/mkcpo78s2ohayv513eqk.gif');
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
-  width: 450px;
-  height: 100px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
 .modal-header {
   font-size: 16px;
   display: flex;
@@ -678,7 +552,7 @@
   font-weight: bold;
   padding: 5px;
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
+  color: white;
 
 
 }
@@ -689,17 +563,17 @@
   justify-content: space-between;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 20px;
-  color: black;
+  color: white;
 
 }
 
 .modal-body-email {
-  margin-top: 15px;
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-family: Arial, Helvetica, sans-serif;
-  color: black;
+  color: white;
 
 }
 
@@ -713,8 +587,7 @@
 
 .modal-footer>a {
 
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 .reset-Container {
@@ -807,13 +680,6 @@ input[type="file"] {
 
 .iconColor {
   color: #1E90FF;
-}
-
-.iconColor2 {
-  color: white;
-  position: relative;
-  left: 400px;
-
 }
 
 .online {
@@ -918,6 +784,8 @@ input[type="file"] {
   /* Khoảng cách giữa các ảnh */
   height: 40px;
   width: 40px;
+
+
 }
 
 .file-chat-icon2 {
@@ -936,16 +804,14 @@ input[type="file"] {
   text-decoration: none;
 
 }
-
-.fr-cap {
+.fr-cap{
   justify-content: center;
   align-items: center;
   position: relative;
   left: 160px;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.fr-cap2 {
+.fr-cap2{
   justify-content: center;
   align-items: center;
   position: relative;
@@ -953,64 +819,5 @@ input[type="file"] {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.fr-cap3 {
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 100px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.fr-cap4 {
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 120px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.input-area {
-  width: 130px;
-  height: 25px;
-  font-size: 15px;
-  resize: none;
-}
-
-.emoji-form {
-  position: absolute;
-  top: 43%;
-  right: 0;
-}
-
-.icon3 {
-  position: relative;
-  right: 5px;
-  top: 5px;
-}
-
-
-.notification {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: white;
-  text-shadow: 1px 1px black;
-  margin-top: 20px;
-}
-
-
-.separator2 {
-  height: 0.5px;
-  width: calc(100%);
-  margin: 0 auto;
-  background-color: #ccc;
-}
-
-.separator {
-  height: 1px;
-  width: calc(100% - 40px);
-  margin: 0 auto;
-  background-color: #ccc;
-}
 
 /* 2/4/2024 */

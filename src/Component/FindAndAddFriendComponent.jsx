@@ -4,8 +4,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import axios from 'axios';
 import UserComponent from '../ComponentItem/UserComponent';
 import { myContext } from './MainComponent';
-//${IP}
-const IP = "http://54.174.184.179:5678"
+
 function FindAndAddFriendComponent({ closemodal }) {
 
     const [users, setUsers] = useState([])
@@ -16,7 +15,7 @@ function FindAndAddFriendComponent({ closemodal }) {
     useEffect(() => {
         const getUser = async () => {
 
-            const dataUser = await axios.post(`${IP}/user/getUserNotFriend`, {
+            const dataUser = await axios.post(`http://localhost:5678/user/getUserNotFriend`, {
                 userId: userData.data._id,
                 name: userData.data.name
             }, {
@@ -34,10 +33,8 @@ function FindAndAddFriendComponent({ closemodal }) {
     ]);
     const clickToaddFriend = async (userIdWantToAdd) => {
         // console.log(userIdWantToAdd);
-
         try {
-
-            await axios.post(`${IP}/user/addfriend`, {
+            await axios.post(`http://localhost:5678/user/addfriend`, {
                 userid: userData.data._id,
                 friendId: userIdWantToAdd
             }, {

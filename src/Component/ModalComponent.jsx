@@ -4,10 +4,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { myContext } from './MainComponent';
 import axios from 'axios';
 import ChatBox from '../ComponentItem/ChatBox';
-import { io } from 'socket.io-client';
-//${IP}
-const IP = "http://54.174.184.179:5678"
-const socket = io(IP)
+
 function ModalComponent({ clockModal }) {
     const [users, setUsers] = useState([]);
     const [checkboxValues, setCheckboxValues] = useState([]);
@@ -32,7 +29,7 @@ function ModalComponent({ clockModal }) {
     const createGroupChat = async () => {
         try {
             const response = await axios.post(
-                `${IP}/chat/createGroupChat`,
+                "http://localhost:5678/chat/createGroupChat",
                 {
                     name: nameGroup,
                     users: JSON.stringify(checkboxValues)
@@ -48,8 +45,6 @@ function ModalComponent({ clockModal }) {
 
             const responseData = response.data;
 
-            socket.emit("new-group", responseData);
-
             clockModal(false);
         } catch (error) {
             console.log("error:", error);
@@ -60,8 +55,8 @@ function ModalComponent({ clockModal }) {
 
     useEffect(() => {
         const getUser = async () => {
-
-            const dataUser = await axios.post(`${IP}/user/getUserAccept`, {
+            setUsers([])
+            const dataUser = await axios.post(`http://localhost:5678/user/getUserAccept`, {
                 name: userData.data.name,
                 userId: userData.data._id
             }, {
@@ -69,10 +64,6 @@ function ModalComponent({ clockModal }) {
                     Authorization: `Bearer ${userData.data.token}`,
                 },
             })
-            // console.log(dataUser.data);
-            // console.log(userData.name);
-            // console.log(userData._id);
-
             setUsers(dataUser.data);
         }
         getUser()
